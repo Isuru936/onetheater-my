@@ -1,0 +1,26 @@
+version: '3.9'
+
+services:
+  onetheater.api:
+    image: ${DOCKER_REGISTRY-}onetheaterapi
+    container_name: OneTheater.Api
+    build:
+      context: .
+      dockerfile: src/API/OneTheater.API/Dockerfile
+    ports:
+    - 5000:8080
+    - 5051:8081
+
+  onetheater.database:
+     image: postgres:latest
+     container_name: OneTheater.Database
+     environment:
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: postgres
+        POSTGRES_DB: onetheater
+     volumes:
+      - ./.containers/db:/var/lib/postgresql/data
+     ports: 
+      - 5432:5432
+  
+

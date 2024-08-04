@@ -1,0 +1,74 @@
+# .NET
+*.dll
+*.exe
+*.pdb
+*.dll.config
+*.exe.config
+
+.containers
+
+# Build results
+[Dd]ebug/
+[Dd]ebugPublic/
+[Rr]elease/
+[Rr]eleases/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Bb]in/
+[Oo]bj/
+
+# Visual Studio files
+.vs/
+*.vscode/
+*.sln
+*.suo
+*.cache
+*.csproj
+*.user
+*.userprefs
+*.log
+*.tlog
+*.diff
+*.mdf
+*.ldf
+*.bak
+*.cache
+*.vspscc
+*.vssscc
+*.zip
+*.rar
+*.7z
+*.nupkg
+*.pfx
+*.snk
+*.bak
+*.cache
+*.bak
+*.resharper*
+*.resharper.user
+_ReSharper*/
+*.dotCover
+*.dotSettings.user
+
+# Test Results
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# NuGet
+packages/
+*.nupkg
+!.nuget/
+*.paket.restore.cs
+
+# Others
+[Dd]ebugPS/
+*.psess
+*.vsp
+*.vspx
+*.vsps
+*.vshost.exe
+*.vshost.exe.config
+*.vshost.exe.manifest
