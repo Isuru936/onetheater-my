@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
+using OneTheater.Common.Application.Behaviors;
 using System.Reflection;
 
 namespace OneTheater.Common.Application;
@@ -14,8 +15,8 @@ public static class ApplicationConfiguration
         {
             config.RegisterServicesFromAssemblies(moduleAssemblies);
 
-            ////config.AddOpenBehavior(typeof(ExceptionHandlingPipelineBehavior<,>));
-            ////config.AddOpenBehavior(typeof(RequestLoggingPipelineBehavior<,>));
+            config.AddOpenBehavior(typeof(ExceptionHandlingPipelineBehavior<,>));
+            config.AddOpenBehavior(typeof(RequestLoggingPipelineBehavior<,>));
             ////config.AddOpenBehavior(typeof(ValidationPipelineBehavior<,>));
         });
 

@@ -2,7 +2,7 @@
 using OneTheater.Common.Domain.Abstractions;
 using OneTheater.Modules.Users.Domain.Abstractions;
 
-namespace OneTheater.Modules.Users.Presentation.ApiResults;
+namespace OneTheater.Common.Presentation.ApiResults;
 
 public static class ApiResults
 {

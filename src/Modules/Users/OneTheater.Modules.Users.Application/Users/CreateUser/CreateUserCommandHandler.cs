@@ -11,7 +11,7 @@ internal sealed class CreateUserCommandHandler(IUserRepository repository, IUnit
 {
     public async Task<Result<Guid>> Handle(CreateUserCommand request, CancellationToken cancellationToken)
     {
-        Result<User> result = User.Create(request.Id, request.Username);
+        Result<User> result = User.Create(request.Username);
 
         if (result.IsSuccess)
         {

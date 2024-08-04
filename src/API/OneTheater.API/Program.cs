@@ -3,6 +3,8 @@ using OneTheater.API.Extensions;
 using OneTheater.Common.Application;
 using OneTheater.Common.Infrastructure;
 using OneTheater.Modules.Users.Infrastructure;
+using OneTheater.Modules.Users.Presentation;
+using OneTheater.Common.Presentation.Endpoints;
 using Serilog;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
@@ -16,7 +18,7 @@ builder.Services.AddApplication([OneTheater.Modules.Users.Application.AssemblyRe
 
 builder.Services.AddInfrastructure(builder.Configuration.GetConnectionString("Database")!);
 
-builder.Configuration.AddModuleConfiguartion(["Users"]);
+builder.Configuration.AddModuleConfiguartion(["users"]);
 
 builder.Services.AddUsersModules(builder.Configuration);
 
@@ -30,7 +32,7 @@ if (app.Environment.IsDevelopment())
     app.ApplyMigrations();
 }
 
-UsersModule.MapEndpoints(app);
+app.MapEndpoints();
 
 app.UseSerilogRequestLogging();
 

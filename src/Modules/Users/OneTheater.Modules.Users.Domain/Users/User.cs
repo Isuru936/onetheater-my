@@ -10,11 +10,11 @@ public sealed class User : Entity
     public Guid Id { get; private set; }
     public string Username { get; private set; }
 
-    public static Result<User> Create(Guid id, string username)
+    public static Result<User> Create(string username)
     {
         var user = new User
         {
-            Id = id,
+            Id = Guid.NewGuid(),
             Username = username
         };
 

@@ -1,6 +1,6 @@
 ﻿using OneTheater.Common.Domain.Abstractions;
 
-namespace OneTheater.Modules.Users.Presentation.ApiResults;
+namespace OneTheater.Common.Presentation.ApiResults;
 
 public static class ResultExtensions
 {

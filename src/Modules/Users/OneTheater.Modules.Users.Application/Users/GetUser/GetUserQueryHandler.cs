@@ -6,11 +6,10 @@ using OneTheater.Common.Domain.Abstractions;
 
 namespace OneTheater.Modules.Users.Application.Users.GetUser;
 
-public class GetUserQueryHandler(IDbConnectionFactory dbConnectionFactory) : IQueryHandler<GetUserQuery, UserResponse>
+internal sealed class GetUserQueryHandler(IDbConnectionFactory dbConnectionFactory) : IQueryHandler<GetUserQuery, UserResponse>
 {
     public async Task<Result<UserResponse>> Handle(GetUserQuery request, CancellationToken cancellationToken)
     {
-
         await using DbConnection conneciton = await dbConnectionFactory.OpenConnectionAsync(cancellationToken);
 
         const string sql =
@@ -18,10 +17,10 @@ public class GetUserQueryHandler(IDbConnectionFactory dbConnectionFactory) : IQu
                 SELECT 
                     id AS {nameof(UserResponse.Id)},
                     username AS {nameof(UserResponse.Username)}
-                FROM Users WHERE Id = @Id
+                FROM users.users WHERE Id = @UserId
             """;
 
-        UserResponse? user = await conneciton.QuerySingleOrDefaultAsync(sql, request);
+        UserResponse? user = await conneciton.QuerySingleOrDefaultAsync<UserResponse>(sql, request);
 
         return user;
     }

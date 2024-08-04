@@ -1,31 +1,25 @@
 ﻿using FluentValidation;
-using Microsoft.AspNetCore.Routing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.DependencyInjection.Extensions;
-using Npgsql;
-using OneTheater.Common.Application.Abstrations.Data;
+using OneTheater.Common.Presentation.Endpoints;
 using OneTheater.Modules.Users.Application.Abstractions.Data;
 using OneTheater.Modules.Users.Domain.Users;
 using OneTheater.Modules.Users.Infrastructure.Database;
 using OneTheater.Modules.Users.Infrastructure.Users;
-using OneTheater.Modules.Users.Presentation.Users;
+using OneTheater.Modules.Users.Presentation;
 
 namespace OneTheater.Modules.Users.Infrastructure;
 public static class UsersModule
 {
-    public static void MapEndpoints(IEndpointRouteBuilder app)
-    {
-        UsersEndpoints.MapEndPoints(app);
-    }
-
     public static IServiceCollection AddUsersModules(
         this IServiceCollection services,
         IConfiguration configuration
         )
     {
+        services.AddEndpoints(Presentation.AssemblyReference.Assembly);
+
         services.AddMediatR(config =>
         {
             config.RegisterServicesFromAssembly(Application.AssemblyReference.Assembly);

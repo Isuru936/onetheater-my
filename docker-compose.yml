@@ -23,4 +23,12 @@ services:
      ports: 
       - 5432:5432
   
+  onetheater.seq:
+      image: datalust/seq:latest
+      container_name: OneTheater.Seq
+      environment:
+        - ACCEPT_EULA=Y
+      ports:
+        - 5341:5341
+        - 8081:80
 
