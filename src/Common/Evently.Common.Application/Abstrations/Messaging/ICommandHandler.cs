@@ -1,7 +1,7 @@
 ﻿using MediatR;
-using OneTheater.Modules.Users.Domain.Abstractions;
+using OneTheater.Common.Domain.Abstractions;
 
-namespace OneTheater.Modules.Users.Application.Abstractions.Messaging;
+namespace OneTheater.Common.Application.Abstrations.Messaging;
 
 public interface ICommandHandler<in TCommand> : IRequestHandler<TCommand, Result>
     where TCommand : ICommand;

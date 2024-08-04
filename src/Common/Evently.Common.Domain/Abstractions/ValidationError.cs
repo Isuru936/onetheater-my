@@ -1,4 +1,6 @@
-﻿namespace OneTheater.Modules.Users.Domain.Abstractions;
+﻿using OneTheater.Common.Domain.Abstractions;
+
+namespace OneTheater.Modules.Users.Domain.Abstractions;
 
 public sealed record ValidationError : Error
 {

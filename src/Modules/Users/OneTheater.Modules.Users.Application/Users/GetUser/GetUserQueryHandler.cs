@@ -1,8 +1,8 @@
 ﻿using System.Data.Common;
 using Dapper;
-using OneTheater.Modules.Users.Application.Abstractions.Data;
-using OneTheater.Modules.Users.Application.Abstractions.Messaging;
-using OneTheater.Modules.Users.Domain.Abstractions;
+using OneTheater.Common.Application.Abstrations.Data;
+using OneTheater.Common.Application.Abstrations.Messaging;
+using OneTheater.Common.Domain.Abstractions;
 
 namespace OneTheater.Modules.Users.Application.Users.GetUser;
 

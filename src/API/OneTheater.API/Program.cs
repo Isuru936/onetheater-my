@@ -1,10 +1,15 @@
 using OneTheater.API.Extensions;
+using OneTheater.Common.Application;
+using OneTheater.Common.Infrastructure;
 using OneTheater.Modules.Users.Infrastructure;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddApplication([OneTheater.Modules.Users.Application.AssemblyReference.Assembly]);
+builder.Services.AddInfrastructure(builder.Configuration.GetConnectionString("Database")!);
 
 builder.Services.AddUsersModules(builder.Configuration);
 

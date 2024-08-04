@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Http;
+using OneTheater.Common.Domain.Abstractions;
 using OneTheater.Modules.Users.Domain.Abstractions;
 
 namespace OneTheater.Modules.Users.Presentation.ApiResults;

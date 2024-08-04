@@ -1,4 +1,6 @@
-﻿namespace OneTheater.Modules.Users.Domain.Abstractions;
+﻿using OneTheater.Modules.Users.Domain.Abstractions;
+
+namespace OneTheater.Common.Domain.Abstractions;
 public record Error
 {
     public static readonly Error None = new(string.Empty, string.Empty, ErrorType.Failure);

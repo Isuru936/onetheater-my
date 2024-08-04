@@ -1,4 +1,4 @@
-﻿using OneTheater.Modules.Users.Application.Abstractions.Messaging;
+﻿using OneTheater.Common.Application.Abstrations.Messaging;
 
 namespace OneTheater.Modules.Users.Application.Users.GetUser;
 

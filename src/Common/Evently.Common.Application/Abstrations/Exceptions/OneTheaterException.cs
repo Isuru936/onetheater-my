@@ -1,6 +1,6 @@
-﻿using OneTheater.Modules.Users.Domain.Abstractions;
+﻿using OneTheater.Common.Domain.Abstractions;
 
-namespace OneTheater.Modules.Users.Application.Abstractions.Exceptions;
+namespace OneTheater.Common.Application.Abstrations.Exceptions;
 public sealed class OneTheaterException : Exception
 {
     public OneTheaterException(string requestName, Error? error = default, Exception? innerException = default) : base("Application exception", innerException)
@@ -9,6 +9,6 @@ public sealed class OneTheaterException : Exception
         Error = error;
     }
 
-    public string RequestName { get;}
+    public string RequestName { get; }
     public Error? Error { get; }
 }

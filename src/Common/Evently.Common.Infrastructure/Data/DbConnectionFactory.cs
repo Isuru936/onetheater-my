@@ -1,8 +1,8 @@
 ﻿using System.Data.Common;
 using Npgsql;
-using OneTheater.Modules.Users.Application.Abstractions.Data;
+using OneTheater.Common.Application.Abstrations.Data;
 
-namespace OneTheater.Modules.Users.Infrastructure.Data;
+namespace OneTheater.Common.Infrastructure.Data;
 
 internal sealed class DbConnectionFactory(NpgsqlDataSource dataSource) : IDbConnectionFactory
 {

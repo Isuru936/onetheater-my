@@ -1,7 +1,7 @@
 ﻿using MediatR;
+using OneTheater.Common.Application.Abstrations.Messaging;
+using OneTheater.Common.Domain.Abstractions;
 using OneTheater.Modules.Users.Application.Abstractions.Data;
-using OneTheater.Modules.Users.Application.Abstractions.Messaging;
-using OneTheater.Modules.Users.Domain.Abstractions;
 using OneTheater.Modules.Users.Domain.Users;
 
 namespace OneTheater.Modules.Users.Application.Users.CreateUser;

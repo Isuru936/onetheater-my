@@ -1,4 +1,4 @@
-﻿namespace OneTheater.Modules.Users.Domain.Abstractions;
+﻿namespace OneTheater.Common.Domain.Abstractions;
 
 public abstract class DomainEvent : IDomainEvent
 {

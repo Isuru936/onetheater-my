@@ -6,9 +6,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Npgsql;
+using OneTheater.Common.Application.Abstrations.Data;
 using OneTheater.Modules.Users.Application.Abstractions.Data;
 using OneTheater.Modules.Users.Domain.Users;
-using OneTheater.Modules.Users.Infrastructure.Data;
 using OneTheater.Modules.Users.Infrastructure.Database;
 using OneTheater.Modules.Users.Infrastructure.Users;
 using OneTheater.Modules.Users.Presentation.Users;
@@ -41,11 +41,6 @@ public static class UsersModule
     private static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
         string databaseConnectionString = configuration.GetConnectionString("Database");
-
-        NpgsqlDataSource npgsqlDataSource = new NpgsqlDataSourceBuilder(databaseConnectionString).Build();
-        services.TryAddSingleton(npgsqlDataSource);
-
-        services.AddScoped<IDbConnectionFactory, DbConnectionFactory>();
 
         services.AddDbContext<UsersDbContext>(options =>
         {

@@ -29,6 +29,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneTheater.Modules.Users.In
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneTheater.Modules.Users.Presentation", "src\Modules\Users\OneTheater.Modules.Users.Presentation\OneTheater.Modules.Users.Presentation.csproj", "{A2FED589-4DE3-4283-99CE-CE40E4B607D8}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{79C85683-74EC-48A7-9BA8-A71FE3CBDFE4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneTheater.Common.Application", "src\Common\Evently.Common.Application\OneTheater.Common.Application.csproj", "{F12E5214-998C-4982-B6C0-9BDBB389348A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneTheater.Common.Infrastructure", "src\Common\Evently.Common.Infrastructure\OneTheater.Common.Infrastructure.csproj", "{BD00EE8B-FB29-4ED3-90E1-1CD7C9F2D3F1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneTheater.Common.Domain", "src\Common\Evently.Common.Domain\OneTheater.Common.Domain.csproj", "{4FB49C18-45EB-44BF-9281-49FA66998725}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneTheater.Common.Presentation", "src\Common\Evently.Common.Presentation\OneTheater.Common.Presentation.csproj", "{AE5D7BDB-DB84-48B9-B800-D5174DE93A11}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +69,22 @@ Global
 		{A2FED589-4DE3-4283-99CE-CE40E4B607D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A2FED589-4DE3-4283-99CE-CE40E4B607D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A2FED589-4DE3-4283-99CE-CE40E4B607D8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F12E5214-998C-4982-B6C0-9BDBB389348A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F12E5214-998C-4982-B6C0-9BDBB389348A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F12E5214-998C-4982-B6C0-9BDBB389348A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F12E5214-998C-4982-B6C0-9BDBB389348A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD00EE8B-FB29-4ED3-90E1-1CD7C9F2D3F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD00EE8B-FB29-4ED3-90E1-1CD7C9F2D3F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD00EE8B-FB29-4ED3-90E1-1CD7C9F2D3F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD00EE8B-FB29-4ED3-90E1-1CD7C9F2D3F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4FB49C18-45EB-44BF-9281-49FA66998725}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4FB49C18-45EB-44BF-9281-49FA66998725}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4FB49C18-45EB-44BF-9281-49FA66998725}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4FB49C18-45EB-44BF-9281-49FA66998725}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AE5D7BDB-DB84-48B9-B800-D5174DE93A11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AE5D7BDB-DB84-48B9-B800-D5174DE93A11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AE5D7BDB-DB84-48B9-B800-D5174DE93A11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AE5D7BDB-DB84-48B9-B800-D5174DE93A11}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -72,6 +98,11 @@ Global
 		{473720BB-9B4E-4BBA-B9F8-E30BFE7D39B9} = {769DB410-76B8-4596-B13E-70CE86C05E88}
 		{D09E04B0-7567-46EC-B7AB-376F2A2B3C31} = {769DB410-76B8-4596-B13E-70CE86C05E88}
 		{A2FED589-4DE3-4283-99CE-CE40E4B607D8} = {769DB410-76B8-4596-B13E-70CE86C05E88}
+		{79C85683-74EC-48A7-9BA8-A71FE3CBDFE4} = {DBE9E1F8-A0C8-4E1F-B740-6034C87EA28A}
+		{F12E5214-998C-4982-B6C0-9BDBB389348A} = {79C85683-74EC-48A7-9BA8-A71FE3CBDFE4}
+		{BD00EE8B-FB29-4ED3-90E1-1CD7C9F2D3F1} = {79C85683-74EC-48A7-9BA8-A71FE3CBDFE4}
+		{4FB49C18-45EB-44BF-9281-49FA66998725} = {79C85683-74EC-48A7-9BA8-A71FE3CBDFE4}
+		{AE5D7BDB-DB84-48B9-B800-D5174DE93A11} = {79C85683-74EC-48A7-9BA8-A71FE3CBDFE4}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A9E2A100-C716-4263-A409-9AB63ABBA117}

@@ -2,8 +2,8 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Routing;
+using OneTheater.Common.Domain.Abstractions;
 using OneTheater.Modules.Users.Application.Users.CreateUser;
-using OneTheater.Modules.Users.Domain.Abstractions;
 using OneTheater.Modules.Users.Presentation.ApiResults;
 
 namespace OneTheater.Modules.Users.Presentation.Users;
