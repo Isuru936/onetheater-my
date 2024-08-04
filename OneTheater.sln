@@ -1,0 +1,79 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.10.35013.160
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{83B98195-7AC1-4980-B02D-5DD53B38F9D7}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		Directory.Build.props = Directory.Build.props
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{DBE9E1F8-A0C8-4E1F-B740-6034C87EA28A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{8AA2FAB3-0C7E-44D1-9DFE-868EA55E0D5C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Modules", "Modules", "{7014A9F8-A1D6-4A41-A31B-A246E0AF5781}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneTheater.API", "src\API\OneTheater.API\OneTheater.API.csproj", "{4E3E51A9-DBD1-42D4-B1DB-8BDB59985809}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Users", "Users", "{769DB410-76B8-4596-B13E-70CE86C05E88}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{BE7A9F6C-F0F6-4E3F-8407-76EAA615D81F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneTheater.Modules.Users.Domain", "src\Modules\Users\OneTheater.Modules.Users.Domain\OneTheater.Modules.Users.Domain.csproj", "{EA518BD4-A9FA-4F67-BCC6-F0A679BD0F19}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneTheater.Modules.Users.Application", "src\Modules\Users\OneTheater.Modules.Users.Application\OneTheater.Modules.Users.Application.csproj", "{473720BB-9B4E-4BBA-B9F8-E30BFE7D39B9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneTheater.Modules.Users.Infrastructure", "src\Modules\Users\OneTheater.Modules.Users.Infrastructure\OneTheater.Modules.Users.Infrastructure.csproj", "{D09E04B0-7567-46EC-B7AB-376F2A2B3C31}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneTheater.Modules.Users.Presentation", "src\Modules\Users\OneTheater.Modules.Users.Presentation\OneTheater.Modules.Users.Presentation.csproj", "{A2FED589-4DE3-4283-99CE-CE40E4B607D8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4E3E51A9-DBD1-42D4-B1DB-8BDB59985809}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E3E51A9-DBD1-42D4-B1DB-8BDB59985809}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E3E51A9-DBD1-42D4-B1DB-8BDB59985809}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E3E51A9-DBD1-42D4-B1DB-8BDB59985809}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BE7A9F6C-F0F6-4E3F-8407-76EAA615D81F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BE7A9F6C-F0F6-4E3F-8407-76EAA615D81F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BE7A9F6C-F0F6-4E3F-8407-76EAA615D81F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BE7A9F6C-F0F6-4E3F-8407-76EAA615D81F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA518BD4-A9FA-4F67-BCC6-F0A679BD0F19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA518BD4-A9FA-4F67-BCC6-F0A679BD0F19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA518BD4-A9FA-4F67-BCC6-F0A679BD0F19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA518BD4-A9FA-4F67-BCC6-F0A679BD0F19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{473720BB-9B4E-4BBA-B9F8-E30BFE7D39B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{473720BB-9B4E-4BBA-B9F8-E30BFE7D39B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{473720BB-9B4E-4BBA-B9F8-E30BFE7D39B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{473720BB-9B4E-4BBA-B9F8-E30BFE7D39B9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D09E04B0-7567-46EC-B7AB-376F2A2B3C31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D09E04B0-7567-46EC-B7AB-376F2A2B3C31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D09E04B0-7567-46EC-B7AB-376F2A2B3C31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D09E04B0-7567-46EC-B7AB-376F2A2B3C31}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A2FED589-4DE3-4283-99CE-CE40E4B607D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A2FED589-4DE3-4283-99CE-CE40E4B607D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A2FED589-4DE3-4283-99CE-CE40E4B607D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A2FED589-4DE3-4283-99CE-CE40E4B607D8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8AA2FAB3-0C7E-44D1-9DFE-868EA55E0D5C} = {DBE9E1F8-A0C8-4E1F-B740-6034C87EA28A}
+		{7014A9F8-A1D6-4A41-A31B-A246E0AF5781} = {DBE9E1F8-A0C8-4E1F-B740-6034C87EA28A}
+		{4E3E51A9-DBD1-42D4-B1DB-8BDB59985809} = {8AA2FAB3-0C7E-44D1-9DFE-868EA55E0D5C}
+		{769DB410-76B8-4596-B13E-70CE86C05E88} = {7014A9F8-A1D6-4A41-A31B-A246E0AF5781}
+		{EA518BD4-A9FA-4F67-BCC6-F0A679BD0F19} = {769DB410-76B8-4596-B13E-70CE86C05E88}
+		{473720BB-9B4E-4BBA-B9F8-E30BFE7D39B9} = {769DB410-76B8-4596-B13E-70CE86C05E88}
+		{D09E04B0-7567-46EC-B7AB-376F2A2B3C31} = {769DB410-76B8-4596-B13E-70CE86C05E88}
+		{A2FED589-4DE3-4283-99CE-CE40E4B607D8} = {769DB410-76B8-4596-B13E-70CE86C05E88}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A9E2A100-C716-4263-A409-9AB63ABBA117}
+	EndGlobalSection
+EndGlobal

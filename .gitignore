@@ -23,7 +23,6 @@ bld/
 # Visual Studio files
 .vs/
 *.vscode/
-*.sln
 *.suo
 *.cache
 *.csproj
