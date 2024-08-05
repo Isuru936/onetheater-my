@@ -28,6 +28,16 @@ public sealed class ShowsDbContext(DbContextOptions<ShowsDbContext> options) : D
     internal DbSet<SeatsInventory> SeatsInventories { get; set; }
     internal DbSet<Show> Shows { get; set; }
 
+    public async Task<DbTransaction> BeginTransactionAsync(CancellationToken cancellationToken = default)
+    {
+        if (Database.CurrentTransaction is not null)
+        {
+            await Database.CurrentTransaction.DisposeAsync();
+        }
+
+        return (await Database.BeginTransactionAsync(cancellationToken)).GetDbTransaction();
+    }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.HasDefaultSchema(Schemas.Shows);
