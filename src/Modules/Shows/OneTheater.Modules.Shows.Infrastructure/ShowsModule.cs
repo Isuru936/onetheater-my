@@ -7,8 +7,20 @@ using OneTheater.Common.Infrastructure.Interceptors;
 using OneTheater.Common.Presentation.Endpoints;
 using OneTheater.Modules.Shows.Application.Abstractions.Data;
 using OneTheater.Modules.Shows.Domain.Customers;
+using OneTheater.Modules.Shows.Domain.Movies;
+using OneTheater.Modules.Shows.Domain.Screens;
+using OneTheater.Modules.Shows.Domain.Seats;
+using OneTheater.Modules.Shows.Domain.SeatsInventories;
+using OneTheater.Modules.Shows.Domain.Shows;
+using OneTheater.Modules.Shows.Domain.Theaters;
 using OneTheater.Modules.Shows.Infrastructure.Customers;
 using OneTheater.Modules.Shows.Infrastructure.Database;
+using OneTheater.Modules.Shows.Infrastructure.Movies;
+using OneTheater.Modules.Shows.Infrastructure.Screens;
+using OneTheater.Modules.Shows.Infrastructure.Seats;
+using OneTheater.Modules.Shows.Infrastructure.SeatsInventories;
+using OneTheater.Modules.Shows.Infrastructure.Shows;
+using OneTheater.Modules.Shows.Infrastructure.Theaters;
 
 namespace OneTheater.Modules.Shows.Infrastructure;
 public static class ShowsModule
@@ -42,6 +54,12 @@ public static class ShowsModule
         services.AddScoped<IUnitOfWork>(sp => sp.GetRequiredService<ShowsDbContext>());
 
         services.AddScoped<ICustomerRepository, CustomerRepository>();
+        services.AddScoped<IMovieRepository, MovieRepository>();
+        services.AddScoped<ITheaterRepository, TheaterRepository>();
+        services.AddScoped<IScreenRepository, ScreenRepository>();
+        services.AddScoped<ISeatRepository, SeatRepository>();
+        services.AddScoped<ISeatsInventoryRepository, SeatsInventoryRepository>();
+        services.AddScoped<IShowRepository, ShowRepository>();
 
     }
 }
