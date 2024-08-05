@@ -4,10 +4,12 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using OneTheater.Common.Infrastructure.Interceptors;
+using OneTheater.Common.Infrastructure.Outbox;
 using OneTheater.Common.Presentation.Endpoints;
 using OneTheater.Modules.Users.Application.Abstractions.Data;
 using OneTheater.Modules.Users.Domain.Users;
 using OneTheater.Modules.Users.Infrastructure.Database;
+using OneTheater.Modules.Users.Infrastructure.Outbox;
 using OneTheater.Modules.Users.Infrastructure.Users;
 using OneTheater.Modules.Users.Infrastructure.UserTypes;
 
@@ -37,7 +39,7 @@ public static class UsersModule
                 npgsqlOptions => npgsqlOptions
                 .MigrationsHistoryTable(HistoryRepository.DefaultTableName, Schemas.Users))
             .UseSnakeCaseNamingConvention()
-            .AddInterceptors(sp.GetRequiredService<PublishDomainEventsInterceptor>());
+            .AddInterceptors(sp.GetRequiredService<InsertOutboxMessagesInterceptor>());
         });
 
         services.AddScoped<IUnitOfWork>(sp => sp.GetRequiredService<UsersDbContext>());
@@ -45,5 +47,7 @@ public static class UsersModule
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IUserTypeRepository, UserTypeRepository>();
 
+        services.Configure<OutboxOptions>(configuration.GetSection("Users:Outbox"));
+        services.ConfigureOptions<ConfigureProcessOutboxJob>();
     }
 }

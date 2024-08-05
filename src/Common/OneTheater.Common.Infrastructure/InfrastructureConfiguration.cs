@@ -4,10 +4,14 @@ using Microsoft.Extensions.DependencyInjection.Extensions;
 using Npgsql;
 using OneTheater.Common.Application.Abstrations.Data;
 using OneTheater.Common.Application.Caching;
+using OneTheater.Common.Application.Clock;
 using OneTheater.Common.Application.EventBus;
 using OneTheater.Common.Infrastructure.Caching;
+using OneTheater.Common.Infrastructure.Clock;
 using OneTheater.Common.Infrastructure.Data;
 using OneTheater.Common.Infrastructure.Interceptors;
+using OneTheater.Common.Infrastructure.Outbox;
+using Quartz;
 using StackExchange.Redis;
 
 namespace OneTheater.Common.Infrastructure;
@@ -25,9 +29,17 @@ public static class InfrastructureConfiguration
 
         services.AddScoped<IDbConnectionFactory, DbConnectionFactory>();
 
-        services.TryAddSingleton<PublishDomainEventsInterceptor>();
+        ////services.TryAddSingleton<PublishDomainEventsInterceptor>();
+
+        services.TryAddSingleton<InsertOutboxMessagesInterceptor>();
 
         services.TryAddSingleton<ICacheService, CacheService>();
+
+        services.AddQuartz();
+
+        services.AddQuartzHostedService(options => options.WaitForJobsToComplete = true);
+
+        services.TryAddSingleton<IDateTimeProvider, DateTimeProvider>();
 
         try
         {

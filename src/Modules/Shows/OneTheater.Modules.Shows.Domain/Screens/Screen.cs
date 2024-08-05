@@ -26,7 +26,7 @@ public sealed class Screen : Entity
             Seats = Seat.NewScreenSeats(10, 10, screenId)
         };
 
-        screen.Raise(new ScreenCreatedDomainEvent(screen.Id, screen.Name, screen.TheaterId));
+        ////screen.Raise(new ScreenCreatedDomainEvent(screen.Id, screen.Name, screen.TheaterId));
 
         return screen;
     }

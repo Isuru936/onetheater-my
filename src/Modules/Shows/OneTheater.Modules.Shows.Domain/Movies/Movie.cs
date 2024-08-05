@@ -18,7 +18,7 @@ public sealed class Movie : Entity
             Name = name
         };
 
-        movie.Raise(new MovieCreatedDomainEvent(movie.Id, movie.Name));
+        ////movie.Raise(new MovieCreatedDomainEvent(movie.Id, movie.Name));
 
         return movie;
     }

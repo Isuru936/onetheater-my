@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using OneTheater.Common.Infrastructure.Interceptors;
+using OneTheater.Common.Infrastructure.Outbox;
 using OneTheater.Common.Presentation.Endpoints;
 using OneTheater.Modules.Shows.Application.Abstractions.Data;
 using OneTheater.Modules.Shows.Domain.Customers;
@@ -17,6 +18,7 @@ using OneTheater.Modules.Shows.Domain.Theaters;
 using OneTheater.Modules.Shows.Infrastructure.Customers;
 using OneTheater.Modules.Shows.Infrastructure.Database;
 using OneTheater.Modules.Shows.Infrastructure.Movies;
+using OneTheater.Modules.Shows.Infrastructure.Outbox;
 using OneTheater.Modules.Shows.Infrastructure.PublicApi;
 using OneTheater.Modules.Shows.Infrastructure.Screens;
 using OneTheater.Modules.Shows.Infrastructure.Seats;
@@ -57,7 +59,7 @@ public static class ShowsModule
                 npgsqlOptions => npgsqlOptions
                 .MigrationsHistoryTable(HistoryRepository.DefaultTableName, Schemas.Shows))
             .UseSnakeCaseNamingConvention()
-            .AddInterceptors(sp.GetRequiredService<PublishDomainEventsInterceptor>());
+            .AddInterceptors(sp.GetRequiredService<InsertOutboxMessagesInterceptor>());
         });
 
         services.AddScoped<IUnitOfWork>(sp => sp.GetRequiredService<ShowsDbContext>());
@@ -71,5 +73,8 @@ public static class ShowsModule
         services.AddScoped<ISeatRepository, SeatRepository>();
         services.AddScoped<ISeatsInventoryRepository, SeatsInventoryRepository>();
         services.AddScoped<IShowRepository, ShowRepository>();
+
+        services.Configure<OutboxOptions>(configuration.GetSection("Shows:Outbox"));
+        services.ConfigureOptions<ConfigureProcessOutboxJob>();
     }
 }

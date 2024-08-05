@@ -1,11 +1,8 @@
 {
-  "ConnectionStrings": {
-    "Database": "Host=onetheater.database;Port=5432;Username=postgres;Password=postgres;Database=onetheater"
-  },
-  "Logging": {
-    "LogLevel": {
-      "Default": "Information",
-      "Microsoft.AspNetCore": "Warning"
+  "Shows": {
+    "Outbox": {
+      "IntervalInSeconds": 15,
+      "BatchSize": 20
     }
   }
 }

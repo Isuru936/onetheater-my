@@ -1,6 +1,7 @@
 ﻿using System.Data.Common;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage;
+using OneTheater.Common.Infrastructure.Outbox;
 using OneTheater.Modules.Shows.Application.Abstractions.Data;
 using OneTheater.Modules.Shows.Domain.Customers;
 using OneTheater.Modules.Shows.Domain.Movies;
@@ -41,6 +42,8 @@ public sealed class ShowsDbContext(DbContextOptions<ShowsDbContext> options) : D
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         modelBuilder.HasDefaultSchema(Schemas.Shows);
+
+        modelBuilder.ApplyConfiguration(new OutboxMessageConfiguration());
 
         modelBuilder.ApplyConfiguration(new CustomerConfiguration());
         modelBuilder.ApplyConfiguration(new MovieConfiguration());
