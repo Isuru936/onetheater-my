@@ -125,17 +125,17 @@ namespace OneTheater.Modules.Shows.Infrastructure.Database.Migrations
 
             modelBuilder.Entity("OneTheater.Modules.Shows.Domain.SeatsInventories.SeatsInventory", b =>
                 {
-                    b.Property<Guid>("ScreenId")
+                    b.Property<Guid>("ShowId")
                         .HasColumnType("uuid")
-                        .HasColumnName("screen_id");
+                        .HasColumnName("show_id");
 
                     b.Property<Guid>("SeatId")
                         .HasColumnType("uuid")
                         .HasColumnName("seat_id");
 
-                    b.Property<Guid>("ShowId")
+                    b.Property<Guid>("ScreenId")
                         .HasColumnType("uuid")
-                        .HasColumnName("show_id");
+                        .HasColumnName("screen_id");
 
                     b.Property<string>("SeatNumber")
                         .IsRequired()
@@ -147,11 +147,11 @@ namespace OneTheater.Modules.Shows.Infrastructure.Database.Migrations
                         .HasColumnType("integer")
                         .HasColumnName("status");
 
-                    b.HasKey("ScreenId", "SeatId", "ShowId")
+                    b.HasKey("ShowId", "SeatId")
                         .HasName("pk_seats_inventories");
 
-                    b.HasIndex("ShowId")
-                        .HasDatabaseName("ix_seats_inventories_show_id");
+                    b.HasIndex("ScreenId")
+                        .HasDatabaseName("ix_seats_inventories_screen_id");
 
                     b.ToTable("seats_inventories", "shows");
                 });
@@ -171,7 +171,7 @@ namespace OneTheater.Modules.Shows.Infrastructure.Database.Migrations
                         .HasColumnType("uuid")
                         .HasColumnName("screen_id");
 
-                    b.Property<DateTime>("ShowTime")
+                    b.Property<DateTimeOffset>("ShowTime")
                         .HasColumnType("timestamp with time zone")
                         .HasColumnName("show_time");
 

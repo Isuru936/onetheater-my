@@ -7,7 +7,7 @@ internal sealed class SeatsInventoryConfiguration : IEntityTypeConfiguration<Sea
 {
     public void Configure(EntityTypeBuilder<SeatsInventory> builder)
     {
-        builder.HasKey(x => new { x.ScreenId, x.SeatId, x.ShowId });
+        builder.HasKey(x => new { x.ShowId, x.SeatId });
         builder.Property(x => x.SeatNumber).IsRequired().HasMaxLength(10);
         builder.Property(x => x.Status).IsRequired();
     }

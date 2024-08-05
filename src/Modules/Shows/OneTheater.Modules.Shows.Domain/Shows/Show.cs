@@ -11,11 +11,11 @@ public sealed class Show : Entity
     public Guid Id { get; private set; }
 
     public Guid MovieId { get; private set; }
-    public DateTime ShowTime { get; private set; }
+    public DateTimeOffset ShowTime { get; private set; }
     public Guid ScreenId { get; private set; }
     public List<SeatsInventory> SeatsInventories { get; private set; }
 
-    public static Result<Show> Create(Guid movieId, List<Seat> seatsOftheScreen)
+    public static Result<Show> Create(Guid movieId, Guid screenId, DateTimeOffset showTime, List<Seat> seatsOftheScreen)
     {
         var showId = Guid.NewGuid();
 
@@ -23,10 +23,10 @@ public sealed class Show : Entity
         {
             Id = showId,
             MovieId = movieId,
+            ScreenId = screenId,
+            ShowTime = showTime,
             SeatsInventories = SeatsInventory.RegisterSeatsInventoryScreen(showId, seatsOftheScreen).Value
         };
-
-        ////user.Raise(new ShowCreatedDomainEvent(user.Id));
 
         return user;
     }

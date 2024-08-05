@@ -13,13 +13,13 @@ internal sealed class CreateShow : IEndpoint
     public void MapEndpoint(IEndpointRouteBuilder app)
     {
         app.MapPost("shows", async (Request request, ISender sender) =>
-        {
-            var command = new CreateShowCommand(request.MovieId, request.ScreenId);
+            {
+                var command = new CreateShowCommand(request.MovieId, request.ScreenId, request.ShowTime);
 
-            Result<Guid> result = await sender.Send(command);
+                Result<Guid> result = await sender.Send(command);
 
-            return result.Match(Results.Ok, ApiResults.Problem);
-        })
+                return result.Match(Results.Ok, ApiResults.Problem);
+            })
             .WithTags(Tags.Shows);
     }
 
@@ -27,5 +27,6 @@ internal sealed class CreateShow : IEndpoint
     {
         public Guid MovieId { get; set; }
         public Guid ScreenId { get; set; }
+        public DateTime ShowTime { get; set; }
     }
 }

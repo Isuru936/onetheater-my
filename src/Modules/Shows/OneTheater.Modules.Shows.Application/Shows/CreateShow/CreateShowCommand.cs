@@ -2,4 +2,4 @@
 
 namespace OneTheater.Modules.Shows.Application.Shows.CreateShow;
 
-public sealed record CreateShowCommand(Guid MovieId, Guid ScreenId) : ICommand<Guid>;
+public sealed record CreateShowCommand(Guid MovieId, Guid ScreenId, DateTime ShowTime) : ICommand<Guid>;
