@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using OneTheater.Modules.Shows.Infrastructure.Database;
 using OneTheater.Modules.Users.Infrastructure.Database;
 
 namespace OneTheater.API.Extensions;
@@ -10,6 +11,7 @@ internal static class MihrationExtensions
         using IServiceScope scope = app.ApplicationServices.CreateScope();
 
         ApplyMigrations<UsersDbContext>(scope);
+        ApplyMigrations<ShowsDbContext>(scope);
     }
 
     private static void ApplyMigrations<TDbContext>(IServiceScope scope) where TDbContext : DbContext

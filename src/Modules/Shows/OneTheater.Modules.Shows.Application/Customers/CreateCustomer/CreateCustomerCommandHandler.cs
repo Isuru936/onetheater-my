@@ -10,7 +10,7 @@ internal sealed class CreateUserCommandHandler(ICustomerRepository repository, I
 {
     public async Task<Result<Guid>> Handle(CreateCustomerCommand request, CancellationToken cancellationToken)
     {
-        Result<Customer> result = Customer.Create(request.Email);
+        Result<Customer> result = Customer.Create(request.FirstName, request.LastName, request.Email);
 
         if (result.IsSuccess)
         {

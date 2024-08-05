@@ -9,16 +9,20 @@ public sealed class Customer : Entity
 
     public Guid Id { get; private set; }
     public string Email { get; private set; }
+    public string FirstName { get; private set; }
+    public string LastName { get; private set; }
 
-    public static Result<Customer> Create(string email)
+    public static Result<Customer> Create(string firstName, string lastName, string email)
     {
         var customer = new Customer
         {
             Id = Guid.NewGuid(),
-            Email = email
+            Email = email,
+            FirstName = firstName,
+            LastName = lastName
         };
 
-        customer.Raise(new CustomerCreatedDomainEvent(customer.Id, customer.Email));
+        customer.Raise(new CustomerCreatedDomainEvent(customer.Id, customer.FirstName, customer.LastName, customer.Email));
 
         return customer;
     }
