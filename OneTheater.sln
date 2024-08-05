@@ -21,23 +21,33 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Users", "Users", "{769DB410
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{BE7A9F6C-F0F6-4E3F-8407-76EAA615D81F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneTheater.Modules.Users.Domain", "src\Modules\Users\OneTheater.Modules.Users.Domain\OneTheater.Modules.Users.Domain.csproj", "{EA518BD4-A9FA-4F67-BCC6-F0A679BD0F19}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneTheater.Modules.Users.Domain", "src\Modules\Users\OneTheater.Modules.Users.Domain\OneTheater.Modules.Users.Domain.csproj", "{EA518BD4-A9FA-4F67-BCC6-F0A679BD0F19}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneTheater.Modules.Users.Application", "src\Modules\Users\OneTheater.Modules.Users.Application\OneTheater.Modules.Users.Application.csproj", "{473720BB-9B4E-4BBA-B9F8-E30BFE7D39B9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneTheater.Modules.Users.Application", "src\Modules\Users\OneTheater.Modules.Users.Application\OneTheater.Modules.Users.Application.csproj", "{473720BB-9B4E-4BBA-B9F8-E30BFE7D39B9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneTheater.Modules.Users.Infrastructure", "src\Modules\Users\OneTheater.Modules.Users.Infrastructure\OneTheater.Modules.Users.Infrastructure.csproj", "{D09E04B0-7567-46EC-B7AB-376F2A2B3C31}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneTheater.Modules.Users.Infrastructure", "src\Modules\Users\OneTheater.Modules.Users.Infrastructure\OneTheater.Modules.Users.Infrastructure.csproj", "{D09E04B0-7567-46EC-B7AB-376F2A2B3C31}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneTheater.Modules.Users.Presentation", "src\Modules\Users\OneTheater.Modules.Users.Presentation\OneTheater.Modules.Users.Presentation.csproj", "{A2FED589-4DE3-4283-99CE-CE40E4B607D8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneTheater.Modules.Users.Presentation", "src\Modules\Users\OneTheater.Modules.Users.Presentation\OneTheater.Modules.Users.Presentation.csproj", "{A2FED589-4DE3-4283-99CE-CE40E4B607D8}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{79C85683-74EC-48A7-9BA8-A71FE3CBDFE4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneTheater.Common.Application", "src\Common\OneTheater.Common.Application\OneTheater.Common.Application.csproj", "{F12E5214-998C-4982-B6C0-9BDBB389348A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneTheater.Common.Application", "src\Common\OneTheater.Common.Application\OneTheater.Common.Application.csproj", "{F12E5214-998C-4982-B6C0-9BDBB389348A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneTheater.Common.Infrastructure", "src\Common\OneTheater.Common.Infrastructure\OneTheater.Common.Infrastructure.csproj", "{BD00EE8B-FB29-4ED3-90E1-1CD7C9F2D3F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneTheater.Common.Infrastructure", "src\Common\OneTheater.Common.Infrastructure\OneTheater.Common.Infrastructure.csproj", "{BD00EE8B-FB29-4ED3-90E1-1CD7C9F2D3F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneTheater.Common.Domain", "src\Common\OneTheater.Common.Domain\OneTheater.Common.Domain.csproj", "{4FB49C18-45EB-44BF-9281-49FA66998725}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneTheater.Common.Domain", "src\Common\OneTheater.Common.Domain\OneTheater.Common.Domain.csproj", "{4FB49C18-45EB-44BF-9281-49FA66998725}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OneTheater.Common.Presentation", "src\Common\OneTheater.Common.Presentation\OneTheater.Common.Presentation.csproj", "{AE5D7BDB-DB84-48B9-B800-D5174DE93A11}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneTheater.Common.Presentation", "src\Common\OneTheater.Common.Presentation\OneTheater.Common.Presentation.csproj", "{AE5D7BDB-DB84-48B9-B800-D5174DE93A11}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shows", "Shows", "{5A09625B-0D1E-4B7D-9B9A-D0FB77F770EA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneTheater.Modules.Shows.Application", "src\Modules\Shows\OneTheater.Modules.Shows.Application\OneTheater.Modules.Shows.Application.csproj", "{A05A6887-6F8E-4EAC-A204-DADAC7617F83}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneTheater.Modules.Shows.Domain", "src\Modules\Shows\OneTheater.Modules.Shows.Domain\OneTheater.Modules.Shows.Domain.csproj", "{88B144CB-F6D2-4AEF-B68E-CDD979F4996E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneTheater.Modules.Shows.Infrastructure", "src\Modules\Shows\OneTheater.Modules.Shows.Infrastructure\OneTheater.Modules.Shows.Infrastructure.csproj", "{962D4EAD-1FDE-4611-AAC9-2AD06BC7ADA4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OneTheater.Modules.Shows.Presentation", "src\Modules\Shows\OneTheater.Modules.Shows.Presentation\OneTheater.Modules.Shows.Presentation.csproj", "{91CE2E19-CB09-4E66-835A-091871E2F342}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -85,6 +95,22 @@ Global
 		{AE5D7BDB-DB84-48B9-B800-D5174DE93A11}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AE5D7BDB-DB84-48B9-B800-D5174DE93A11}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AE5D7BDB-DB84-48B9-B800-D5174DE93A11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A05A6887-6F8E-4EAC-A204-DADAC7617F83}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A05A6887-6F8E-4EAC-A204-DADAC7617F83}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A05A6887-6F8E-4EAC-A204-DADAC7617F83}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A05A6887-6F8E-4EAC-A204-DADAC7617F83}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88B144CB-F6D2-4AEF-B68E-CDD979F4996E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88B144CB-F6D2-4AEF-B68E-CDD979F4996E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88B144CB-F6D2-4AEF-B68E-CDD979F4996E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88B144CB-F6D2-4AEF-B68E-CDD979F4996E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{962D4EAD-1FDE-4611-AAC9-2AD06BC7ADA4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{962D4EAD-1FDE-4611-AAC9-2AD06BC7ADA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{962D4EAD-1FDE-4611-AAC9-2AD06BC7ADA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{962D4EAD-1FDE-4611-AAC9-2AD06BC7ADA4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91CE2E19-CB09-4E66-835A-091871E2F342}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91CE2E19-CB09-4E66-835A-091871E2F342}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91CE2E19-CB09-4E66-835A-091871E2F342}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91CE2E19-CB09-4E66-835A-091871E2F342}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -103,6 +129,11 @@ Global
 		{BD00EE8B-FB29-4ED3-90E1-1CD7C9F2D3F1} = {79C85683-74EC-48A7-9BA8-A71FE3CBDFE4}
 		{4FB49C18-45EB-44BF-9281-49FA66998725} = {79C85683-74EC-48A7-9BA8-A71FE3CBDFE4}
 		{AE5D7BDB-DB84-48B9-B800-D5174DE93A11} = {79C85683-74EC-48A7-9BA8-A71FE3CBDFE4}
+		{5A09625B-0D1E-4B7D-9B9A-D0FB77F770EA} = {7014A9F8-A1D6-4A41-A31B-A246E0AF5781}
+		{A05A6887-6F8E-4EAC-A204-DADAC7617F83} = {5A09625B-0D1E-4B7D-9B9A-D0FB77F770EA}
+		{88B144CB-F6D2-4AEF-B68E-CDD979F4996E} = {5A09625B-0D1E-4B7D-9B9A-D0FB77F770EA}
+		{962D4EAD-1FDE-4611-AAC9-2AD06BC7ADA4} = {5A09625B-0D1E-4B7D-9B9A-D0FB77F770EA}
+		{91CE2E19-CB09-4E66-835A-091871E2F342} = {5A09625B-0D1E-4B7D-9B9A-D0FB77F770EA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A9E2A100-C716-4263-A409-9AB63ABBA117}

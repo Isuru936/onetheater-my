@@ -1,0 +1,47 @@
+﻿using FluentValidation;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using OneTheater.Common.Infrastructure.Interceptors;
+using OneTheater.Common.Presentation.Endpoints;
+using OneTheater.Modules.Shows.Application.Abstractions.Data;
+using OneTheater.Modules.Shows.Domain.Customers;
+using OneTheater.Modules.Shows.Infrastructure.Customers;
+using OneTheater.Modules.Shows.Infrastructure.Database;
+
+namespace OneTheater.Modules.Shows.Infrastructure;
+public static class ShowsModule
+{
+    public static IServiceCollection AddShowsModules(
+        this IServiceCollection services,
+        IConfiguration configuration
+        )
+    {
+        services.AddEndpoints(Presentation.AssemblyReference.Assembly);
+
+        services.AddInfrastructure(configuration);
+
+        return services;
+    }
+
+    private static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
+    {
+        string databaseConnectionString = configuration.GetConnectionString("Database");
+
+        services.AddDbContext<ShowsDbContext>((sp, options) =>
+        {
+            options
+            .UseNpgsql(databaseConnectionString,
+                npgsqlOptions => npgsqlOptions
+                .MigrationsHistoryTable(HistoryRepository.DefaultTableName, Schemas.Shows))
+            .UseSnakeCaseNamingConvention()
+            .AddInterceptors(sp.GetRequiredService<PublishDomainEventsInterceptor>());
+        });
+
+        services.AddScoped<IUnitOfWork>(sp => sp.GetRequiredService<ShowsDbContext>());
+
+        services.AddScoped<ICustomerRepository, CustomerRepository>();
+
+    }
+}
