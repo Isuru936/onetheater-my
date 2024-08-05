@@ -1,4 +1,5 @@
-﻿using OneTheater.Common.Application.Abstrations.Messaging;
+﻿using System.Data.Common;
+using OneTheater.Common.Application.Abstrations.Messaging;
 using OneTheater.Common.Domain.Abstractions;
 using OneTheater.Modules.Shows.Application.Abstractions.Data;
 using OneTheater.Modules.Shows.Domain.Customers;
@@ -10,6 +11,8 @@ internal sealed class CreateUserCommandHandler(ICustomerRepository repository, I
 {
     public async Task<Result<Guid>> Handle(CreateCustomerCommand request, CancellationToken cancellationToken)
     {
+        await using DbTransaction transaction = await unitOfWork.BeginTransactionAsync(cancellationToken);
+
         Result<Customer> result = Customer.Create(request.customerId, request.FirstName, request.LastName, request.Email);
 
         if (result.IsSuccess)
@@ -18,6 +21,8 @@ internal sealed class CreateUserCommandHandler(ICustomerRepository repository, I
         }
 
         await unitOfWork.SaveChangesAsync(cancellationToken);
+
+        await transaction.CommitAsync(cancellationToken);
 
         return result.Value.Id;
     }
