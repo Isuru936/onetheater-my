@@ -1,11 +1,21 @@
 ﻿using OneTheater.Common.Application.Abstrations.Messaging;
+using OneTheater.Modules.Shows.PublicApi;
 using OneTheater.Modules.Users.Domain.Users;
 
 namespace OneTheater.Modules.Users.Application.Users.CreateUser;
-internal sealed class UserCreatedDomainEventHandler : IDomainEventHandler<UserCreatedDomainEvent>
+internal sealed class UserCreatedDomainEventHandler(ICustomersApi customersApi)
+    : IDomainEventHandler<UserCreatedDomainEvent>
 {
-    public Task Handle(UserCreatedDomainEvent notification, CancellationToken cancellationToken)
+    public async Task Handle(UserCreatedDomainEvent notification, CancellationToken cancellationToken)
     {
-        return Task.CompletedTask;
+        var request = new CustomerCreateRequest()
+        {
+            UserId = notification.UserId,
+            FirstName = notification.FirstName,
+            Email = notification.Email,
+            LastName = notification.LastName
+        };
+
+        await customersApi.PostAsync(request, cancellationToken);
     }
 }

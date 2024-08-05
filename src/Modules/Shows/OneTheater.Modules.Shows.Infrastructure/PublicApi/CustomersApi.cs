@@ -8,7 +8,7 @@ internal sealed class CustomersApi(ISender sender) : ICustomersApi
 {
     public async Task<Guid?> PostAsync(CustomerCreateRequest request, CancellationToken cancellationToken = default)
     {
-        Result<Guid> result = await sender.Send(new CreateCustomerCommand(request.FirstName, request.LastName, request.Email), cancellationToken);
+        Result<Guid> result = await sender.Send(new CreateCustomerCommand(request.UserId, request.FirstName, request.LastName, request.Email), cancellationToken);
 
         if (result.IsFailure)
         {

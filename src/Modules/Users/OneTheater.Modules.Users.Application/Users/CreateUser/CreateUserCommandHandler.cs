@@ -1,6 +1,5 @@
 ﻿using OneTheater.Common.Application.Abstrations.Messaging;
 using OneTheater.Common.Domain.Abstractions;
-using OneTheater.Modules.Shows.PublicApi;
 using OneTheater.Modules.Users.Application.Abstractions.Data;
 using OneTheater.Modules.Users.Domain.Users;
 
@@ -8,7 +7,7 @@ namespace OneTheater.Modules.Users.Application.Users.CreateUser;
 
 internal sealed class CreateUserCommandHandler(
     IUserRepository repository,
-    ICustomersApi customersApi,
+    ////ICustomersApi customersApi,
     IUnitOfWork unitOfWork)
     : ICommandHandler<CreateUserCommand, Guid>
 {
@@ -23,12 +22,13 @@ internal sealed class CreateUserCommandHandler(
 
         await unitOfWork.SaveChangesAsync(cancellationToken);
 
-        await customersApi.PostAsync(new CustomerCreateRequest()
-        {
-            Email = request.Email,
-            FirstName = request.FirstName,
-            LastName = request.LastName
-        }, cancellationToken);
+        // Future Reference - DB Duplication
+        ////await customersApi.PostAsync(new CustomerCreateRequest()
+        ////{
+        ////    Email = request.Email,
+        ////    FirstName = request.FirstName,
+        ////    LastName = request.LastName
+        ////}, cancellationToken);
 
         return result.Value.Id;
     }

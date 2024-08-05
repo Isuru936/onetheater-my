@@ -12,11 +12,11 @@ public sealed class Customer : Entity
     public string FirstName { get; private set; }
     public string LastName { get; private set; }
 
-    public static Result<Customer> Create(string firstName, string lastName, string email)
+    public static Result<Customer> Create(Guid id, string firstName, string lastName, string email)
     {
         var customer = new Customer
         {
-            Id = Guid.NewGuid(),
+            Id = id,
             Email = email,
             FirstName = firstName,
             LastName = lastName
