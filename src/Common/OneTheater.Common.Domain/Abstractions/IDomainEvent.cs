@@ -1,6 +1,8 @@
-﻿namespace OneTheater.Common.Domain.Abstractions;
+﻿using MediatR;
 
-public interface IDomainEvent
+namespace OneTheater.Common.Domain.Abstractions;
+
+public interface IDomainEvent : INotification
 {
     Guid Id { get; }
 

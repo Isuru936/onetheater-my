@@ -5,6 +5,7 @@ using OneTheater.Common.Application.Abstrations.Data;
 using OneTheater.Common.Application.Caching;
 using OneTheater.Common.Infrastructure.Caching;
 using OneTheater.Common.Infrastructure.Data;
+using OneTheater.Common.Infrastructure.Interceptors;
 using StackExchange.Redis;
 
 namespace OneTheater.Common.Infrastructure;
@@ -20,6 +21,8 @@ public static class InfrastructureConfiguration
         services.TryAddSingleton(npgsqlDataSource);
 
         services.AddScoped<IDbConnectionFactory, DbConnectionFactory>();
+
+        services.TryAddSingleton<PublishDomainEventsInterceptor>();
 
         services.TryAddSingleton<ICacheService, CacheService>();
 
