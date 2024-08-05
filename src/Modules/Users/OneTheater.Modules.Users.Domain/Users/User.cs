@@ -24,7 +24,7 @@ public sealed class User : Entity
             return Result.Failure<User>(UserErrors.AdminUserName);
         }
 
-        user.Raise(new UserCreatedDomainEvent(user.Id));
+        user.Raise(new UserCreatedDomainEvent(user.Id, user.Username));
 
         return user;
     }

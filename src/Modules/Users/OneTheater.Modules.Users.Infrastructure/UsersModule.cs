@@ -8,7 +8,7 @@ using OneTheater.Modules.Users.Application.Abstractions.Data;
 using OneTheater.Modules.Users.Domain.Users;
 using OneTheater.Modules.Users.Infrastructure.Database;
 using OneTheater.Modules.Users.Infrastructure.Users;
-using OneTheater.Modules.Users.Presentation;
+using OneTheater.Modules.Users.Infrastructure.UserTypes;
 
 namespace OneTheater.Modules.Users.Infrastructure;
 public static class UsersModule
@@ -19,13 +19,6 @@ public static class UsersModule
         )
     {
         services.AddEndpoints(Presentation.AssemblyReference.Assembly);
-
-        services.AddMediatR(config =>
-        {
-            config.RegisterServicesFromAssembly(Application.AssemblyReference.Assembly);
-        });
-
-        services.AddValidatorsFromAssembly(Application.AssemblyReference.Assembly, includeInternalTypes: true);
 
         services.AddInfrastructure(configuration);
 
@@ -40,12 +33,15 @@ public static class UsersModule
         {
             options
             .UseNpgsql(databaseConnectionString,
-                npgsqlOptions => npgsqlOptions.MigrationsHistoryTable(HistoryRepository.DefaultTableName, Schemas.Users))
+                npgsqlOptions => npgsqlOptions
+                .MigrationsHistoryTable(HistoryRepository.DefaultTableName, Schemas.Users))
             .UseSnakeCaseNamingConvention();
         });
 
-        services.AddScoped<IUserRepository, UserRepository>();
-
         services.AddScoped<IUnitOfWork>(sp => sp.GetRequiredService<UsersDbContext>());
+
+        services.AddScoped<IUserRepository, UserRepository>();
+        services.AddScoped<IUserTypeRepository, UserTypeRepository>();
+
     }
 }

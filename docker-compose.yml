@@ -32,3 +32,10 @@ services:
         - 5341:5341
         - 8081:80
 
+  onetheater.redis:
+    image: redis:latest
+    container_name: OneTheater.Redis
+    restart: always
+    ports:
+      - 6379:6379
+
