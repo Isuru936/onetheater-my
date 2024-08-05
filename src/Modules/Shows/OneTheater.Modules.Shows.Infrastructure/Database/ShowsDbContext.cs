@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Data.Common;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Storage;
 using OneTheater.Modules.Shows.Application.Abstractions.Data;
 using OneTheater.Modules.Shows.Domain.Customers;
 using OneTheater.Modules.Shows.Domain.Movies;

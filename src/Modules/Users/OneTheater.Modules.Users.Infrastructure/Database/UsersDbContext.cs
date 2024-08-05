@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using OneTheater.Common.Infrastructure.Outbox;
 using OneTheater.Modules.Users.Application.Abstractions.Data;
 using OneTheater.Modules.Users.Domain.Users;
 using OneTheater.Modules.Users.Domain.UserTypes;
@@ -15,6 +16,7 @@ public sealed class UsersDbContext(DbContextOptions<UsersDbContext> options) : D
     {
         modelBuilder.HasDefaultSchema(Schemas.Users);
 
+        modelBuilder.ApplyConfiguration(new OutboxMessageConfiguration());
         modelBuilder.ApplyConfiguration(new UserConfiguration());
         modelBuilder.ApplyConfiguration(new UserTypeConfiguration());
     }
