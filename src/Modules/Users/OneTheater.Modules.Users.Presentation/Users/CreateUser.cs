@@ -16,7 +16,7 @@ internal sealed class CreateUser : IEndpoint
     {
         app.MapPost("users", async (Request request, ISender sender) =>
             {
-                var command = new CreateUserCommand(request.UserName);
+                var command = new CreateUserCommand(request.UserName, request.FirstName, request.LastName, request.Email);
 
                 Result<Guid> result = await sender.Send(command);
 
@@ -28,5 +28,9 @@ internal sealed class CreateUser : IEndpoint
     internal sealed class Request
     {
         public string UserName { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Email { get; set; }
+
     }
 }

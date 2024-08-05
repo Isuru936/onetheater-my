@@ -13,7 +13,7 @@ namespace OneTheater.Common.Infrastructure;
 public static class InfrastructureConfiguration
 {
     public static IServiceCollection AddInfrastructure(
-        this IServiceCollection services, 
+        this IServiceCollection services,
         string databaseConnectionString,
         string redisConnectionString)
     {
@@ -26,13 +26,22 @@ public static class InfrastructureConfiguration
 
         services.TryAddSingleton<ICacheService, CacheService>();
 
-        IConnectionMultiplexer connectionMultiplexer = ConnectionMultiplexer.Connect(redisConnectionString);
-        services.TryAddSingleton(connectionMultiplexer);
-        
-        services.AddStackExchangeRedisCache(options =>
+        try
         {
-            options.ConnectionMultiplexerFactory = () => Task.FromResult(connectionMultiplexer);
-        });
+
+
+            IConnectionMultiplexer connectionMultiplexer = ConnectionMultiplexer.Connect(redisConnectionString);
+            services.TryAddSingleton(connectionMultiplexer);
+
+            services.AddStackExchangeRedisCache(options =>
+            {
+                options.ConnectionMultiplexerFactory = () => Task.FromResult(connectionMultiplexer);
+            });
+        }
+        catch
+        {
+            services.AddDistributedMemoryCache();
+        }
 
         return services;
     }
