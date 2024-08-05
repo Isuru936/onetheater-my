@@ -9,16 +9,17 @@ using Serilog;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-builder.Host.UseSerilog((context , loggerConfig) => loggerConfig.ReadFrom.Configuration(context.Configuration));
+builder.Host.UseSerilog((context, loggerConfig) => loggerConfig.ReadFrom.Configuration(context.Configuration));
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerDocumentation();
 
 builder.Services.AddApplication([
-    OneTheater.Modules.Users.Application.AssemblyReference.Assembly, 
+    OneTheater.Modules.Users.Application.AssemblyReference.Assembly,
     OneTheater.Modules.Shows.Application.AssemblyReference.Assembly]);
 
 builder.Services.AddInfrastructure(
+    [ShowsModule.ConfigureConsumers],
     builder.Configuration.GetConnectionString("Database")!,
     builder.Configuration.GetConnectionString("Cache")!);
 

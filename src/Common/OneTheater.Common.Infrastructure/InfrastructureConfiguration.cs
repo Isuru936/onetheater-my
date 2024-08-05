@@ -1,8 +1,10 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using MassTransit;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Npgsql;
 using OneTheater.Common.Application.Abstrations.Data;
 using OneTheater.Common.Application.Caching;
+using OneTheater.Common.Application.EventBus;
 using OneTheater.Common.Infrastructure.Caching;
 using OneTheater.Common.Infrastructure.Data;
 using OneTheater.Common.Infrastructure.Interceptors;
@@ -14,6 +16,7 @@ public static class InfrastructureConfiguration
 {
     public static IServiceCollection AddInfrastructure(
         this IServiceCollection services,
+        Action<IRegistrationConfigurator>[] moduleConfigureConsumers,
         string databaseConnectionString,
         string redisConnectionString)
     {
@@ -40,6 +43,21 @@ public static class InfrastructureConfiguration
         {
             services.AddDistributedMemoryCache();
         }
+
+        services.TryAddSingleton<IEventBus, EventBus.EventBus>();
+
+        services.AddMassTransit(configure =>
+        {
+            foreach (Action<IRegistrationConfigurator> configureConsumer in moduleConfigureConsumers)
+            {
+                configureConsumer(configure);
+            }
+
+            configure.UsingInMemory((context, cfg) =>
+            {
+                cfg.ConfigureEndpoints(context);
+            });
+        });
 
         return services;
     }

@@ -1,4 +1,5 @@
 ﻿using FluentValidation;
+using MassTransit;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.Extensions.Configuration;
@@ -22,6 +23,7 @@ using OneTheater.Modules.Shows.Infrastructure.Seats;
 using OneTheater.Modules.Shows.Infrastructure.SeatsInventories;
 using OneTheater.Modules.Shows.Infrastructure.Shows;
 using OneTheater.Modules.Shows.Infrastructure.Theaters;
+using OneTheater.Modules.Shows.Presentation.Consumers;
 using OneTheater.Modules.Shows.PublicApi;
 
 namespace OneTheater.Modules.Shows.Infrastructure;
@@ -37,6 +39,11 @@ public static class ShowsModule
         services.AddInfrastructure(configuration);
 
         return services;
+    }
+
+    public static void ConfigureConsumers(IRegistrationConfigurator registrationConfigurtor)
+    { 
+        registrationConfigurtor.AddConsumer<UserCreatedIntegrationEventConsumer>();
     }
 
     private static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
