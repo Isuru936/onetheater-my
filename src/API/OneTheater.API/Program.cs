@@ -6,10 +6,14 @@ using OneTheater.Modules.Users.Infrastructure;
 using OneTheater.Modules.Shows.Infrastructure;
 using OneTheater.Common.Presentation.Endpoints;
 using Serilog;
+using OneTheater.API.Middlewares;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 builder.Host.UseSerilog((context, loggerConfig) => loggerConfig.ReadFrom.Configuration(context.Configuration));
+
+builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
+builder.Services.AddProblemDetails();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerDocumentation();
@@ -41,5 +45,7 @@ if (app.Environment.IsDevelopment())
 app.MapEndpoints();
 
 app.UseSerilogRequestLogging();
+
+app.UseExceptionHandler();
 
 app.Run();
