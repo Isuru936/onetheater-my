@@ -4,7 +4,7 @@ using OneTheater.Modules.Users.Infrastructure.Database;
 
 namespace OneTheater.API.Extensions;
 
-internal static class MihrationExtensions
+internal static class MigrationExtensions
 {
     internal static void ApplyMigrations(this IApplicationBuilder app)
     {
