@@ -7,6 +7,8 @@ using OneTheater.Modules.Shows.Infrastructure;
 using OneTheater.Common.Presentation.Endpoints;
 using Serilog;
 using OneTheater.API.Middlewares;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using HealthChecks.UI.Client;
 
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
@@ -22,10 +24,17 @@ builder.Services.AddApplication([
     OneTheater.Modules.Users.Application.AssemblyReference.Assembly,
     OneTheater.Modules.Shows.Application.AssemblyReference.Assembly]);
 
+string databaseConnectionString = builder.Configuration.GetConnectionString("Database")!;
+string redisConnectionString = builder.Configuration.GetConnectionString("Cache")!;
+
 builder.Services.AddInfrastructure(
     [ShowsModule.ConfigureConsumers],
-    builder.Configuration.GetConnectionString("Database")!,
-    builder.Configuration.GetConnectionString("Cache")!);
+    databaseConnectionString,
+    redisConnectionString);
+
+builder.Services.AddHealthChecks()
+    .AddNpgSql(databaseConnectionString)
+    .AddRedis(redisConnectionString);
 
 builder.Configuration.AddModuleConfiguartion(["users", "shows"]);
 
@@ -43,6 +52,11 @@ if (app.Environment.IsDevelopment())
 }
 
 app.MapEndpoints();
+
+app.MapHealthChecks("health", new HealthCheckOptions()
+{ 
+    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+});
 
 app.UseSerilogRequestLogging();
 
