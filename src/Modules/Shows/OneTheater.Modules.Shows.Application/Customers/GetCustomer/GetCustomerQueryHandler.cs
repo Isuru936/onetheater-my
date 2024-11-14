@@ -16,8 +16,8 @@ internal sealed class GetCustomerQueryHandler(IDbConnectionFactory dbConnectionF
             $"""
                 SELECT 
                     id AS {nameof(CustomerResponse.Id)},
-                    first_name AS {nameof(CustomerResponse.FirstName)}
-                    last_name AS {nameof(CustomerResponse.LastName)}
+                    first_name AS {nameof(CustomerResponse.FirstName)},
+                    last_name AS {nameof(CustomerResponse.LastName)},
                     email AS {nameof(CustomerResponse.Email)}
                 FROM shows.customers WHERE Id = @CustomerId
             """;
