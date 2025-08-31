@@ -5,7 +5,7 @@ using OneTheater.Common.Application.EventBus;
 using OneTheater.Common.Domain.Abstractions;
 using OneTheater.Modules.Users.Application.Users.GetUser;
 using OneTheater.Modules.Users.Domain.Users;
-using OneTheater.Modules.Users.IntegrationEvernt;
+using OneTheater.Modules.Users.IntegrationEvents;
 
 namespace OneTheater.Modules.Users.Application.Users.CreateUser;
 internal sealed class UserCreatedDomainEventHandler(ISender sender, IEventBus eventBus)

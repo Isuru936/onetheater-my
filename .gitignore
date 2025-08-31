@@ -25,7 +25,6 @@ bld/
 *.vscode/
 *.suo
 *.cache
-*.csproj
 *.user
 *.userprefs
 *.log

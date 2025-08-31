@@ -1,6 +1,6 @@
 ﻿using OneTheater.Common.Application.EventBus;
 
-namespace OneTheater.Modules.Users.IntegrationEvernt;
+namespace OneTheater.Modules.Users.IntegrationEvents;
 
 public sealed class UserCreatedIntegrationEvent : IntegrationEvent
 {

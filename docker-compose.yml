@@ -1,4 +1,4 @@
-version: '3.9'
+version: "3.9"
 
 services:
   onetheater.api:
@@ -8,29 +8,44 @@ services:
       context: .
       dockerfile: src/API/OneTheater.API/Dockerfile
     ports:
-    - 5000:8080
-    - 5051:8081
+      - 5000:8080
+      - 5051:8081
 
   onetheater.database:
-     image: postgres:latest
-     container_name: OneTheater.Database
-     environment:
-        POSTGRES_USER: postgres
-        POSTGRES_PASSWORD: postgres
-        POSTGRES_DB: onetheater
-     volumes:
+    image: postgres:latest
+    container_name: OneTheater.Database
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: onetheater
+    volumes:
       - ./.containers/db:/var/lib/postgresql/data
-     ports: 
+    ports:
       - 5432:5432
-  
+        
+  onetheater.pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: OneTheater.PgAdmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+      PGADMIN_LISTEN_PORT: 80
+    ports:
+      - "8080:80"
+    volumes:
+      - ./.containers/pgadmin:/var/lib/pgadmin
+    depends_on:
+      - onetheater.database
+
   onetheater.seq:
-      image: datalust/seq:latest
-      container_name: OneTheater.Seq
-      environment:
-        - ACCEPT_EULA=Y
-      ports:
-        - 5341:5341
-        - 8081:80
+    image: datalust/seq:latest
+    container_name: OneTheater.Seq
+    environment:
+      - ACCEPT_EULA=Y
+      - SEQ_FIRSTRUN_ADMINPASSWORD=admin123
+    ports:
+      - 5341:5341
+      - 8081:80
 
   onetheater.redis:
     image: redis:latest
@@ -38,4 +53,3 @@ services:
     restart: always
     ports:
       - 6379:6379
-

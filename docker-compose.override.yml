@@ -1,4 +1,4 @@
-version: '3.4'
+version: "3.4"
 
 services:
   onetheater.api:
@@ -11,4 +11,4 @@ services:
       - "8081"
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
-      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+      - ${USERPROFILE}/.aspnet/https:/home/app/.aspnet/https:ro

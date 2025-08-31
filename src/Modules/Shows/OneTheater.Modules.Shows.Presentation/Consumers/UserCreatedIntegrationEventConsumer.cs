@@ -4,7 +4,7 @@ using MediatR;
 using OneTheater.Common.Application.Abstrations.Exceptions;
 using OneTheater.Common.Domain.Abstractions;
 using OneTheater.Modules.Shows.Application.Customers.CreateCustomer;
-using OneTheater.Modules.Users.IntegrationEvernt;
+using OneTheater.Modules.Users.IntegrationEvents;
 
 namespace OneTheater.Modules.Shows.Presentation.Consumers;
 public sealed class UserCreatedIntegrationEventConsumer(ISender sender) : IConsumer<UserCreatedIntegrationEvent>
@@ -12,9 +12,9 @@ public sealed class UserCreatedIntegrationEventConsumer(ISender sender) : IConsu
     public async Task Consume(ConsumeContext<UserCreatedIntegrationEvent> context)
     {
         Result<Guid> result = await sender.Send(new CreateCustomerCommand(
-            context.Message.UserId, 
-            context.Message.FirstName, 
-            context.Message.LastName, 
+            context.Message.UserId,
+            context.Message.FirstName,
+            context.Message.LastName,
             context.Message.Email));
 
         if (result.IsFailure)

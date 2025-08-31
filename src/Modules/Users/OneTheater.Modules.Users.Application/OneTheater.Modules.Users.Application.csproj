@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="FluentValidation" Version="11.9.0" />
+    <PackageReference Include="MediatR" Version="12.2.0" />
+    <PackageReference Include="Dapper" Version="2.1.24" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Common\OneTheater.Common.Application\OneTheater.Common.Application.csproj" />
+    <ProjectReference Include="..\OneTheater.Modules.Users.Domain\OneTheater.Modules.Users.Domain.csproj" />
+    <ProjectReference Include="..\OneTheater.Modules.Users.IntegrationEvents\OneTheater.Modules.Users.IntegrationEvents.csproj" />
+  </ItemGroup>
+
+</Project>
