@@ -62,8 +62,6 @@ internal sealed class ProcessOutboxJob
 
         await transaction.CommitAsync();
 
-        await transaction.CommitAsync();
-
         logger.LogInformation("{Module} - Completed processing outbox messages", ModuleName);
     }
 

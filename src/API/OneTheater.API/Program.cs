@@ -18,7 +18,12 @@ builder.Services.AddExceptionHandler<GlobalExceptionHandler>();
 builder.Services.AddProblemDetails();
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerDocumentation();
+builder.Services.AddSwaggerDocumentation(builder.Configuration);
+
+builder.Services.AddKeycloakAuthentication(builder.Configuration);
+
+// Register API endpoints
+builder.Services.AddEndpoints(System.Reflection.Assembly.GetExecutingAssembly());
 
 builder.Services.AddApplication([
     OneTheater.Modules.Users.Application.AssemblyReference.Assembly,
@@ -28,7 +33,8 @@ string databaseConnectionString = builder.Configuration.GetConnectionString("Dat
 string redisConnectionString = builder.Configuration.GetConnectionString("Cache")!;
 
 builder.Services.AddInfrastructure(
-    [ShowsModule.ConfigureConsumers],
+    builder.Configuration,
+    [ShowsModule.ConfigureConsumers], // add this if you have a consumer
     databaseConnectionString,
     redisConnectionString);
 
@@ -46,7 +52,7 @@ WebApplication app = builder.Build();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.AddSwaggerUIOidcConfiguration(builder.Configuration);
 
     app.ApplyMigrations();
 }
@@ -54,11 +60,14 @@ if (app.Environment.IsDevelopment())
 app.MapEndpoints();
 
 app.MapHealthChecks("health", new HealthCheckOptions()
-{ 
+{
     ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
 });
 
 app.UseSerilogRequestLogging();
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.UseExceptionHandler();
 

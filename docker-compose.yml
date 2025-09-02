@@ -1,5 +1,10 @@
 version: "3.9"
 
+networks:
+  onetheater-network:
+    driver: bridge
+    name: onetheater-network
+
 services:
   onetheater.api:
     image: ${DOCKER_REGISTRY-}onetheaterapi
@@ -9,7 +14,13 @@ services:
       dockerfile: src/API/OneTheater.API/Dockerfile
     ports:
       - 5000:8080
-      - 5051:8081
+    networks:
+      - onetheater-network
+    depends_on:
+      onetheater.database:
+        condition: service_healthy
+      onetheater.redis:
+        condition: service_started
 
   onetheater.database:
     image: postgres:latest
@@ -22,7 +33,14 @@ services:
       - ./.containers/db:/var/lib/postgresql/data
     ports:
       - 5432:5432
-        
+    networks:
+      - onetheater-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
   onetheater.pgadmin:
     image: dpage/pgadmin4:latest
     container_name: OneTheater.PgAdmin
@@ -34,6 +52,8 @@ services:
       - "8080:80"
     volumes:
       - ./.containers/pgadmin:/var/lib/pgadmin
+    networks:
+      - onetheater-network
     depends_on:
       - onetheater.database
 
@@ -46,6 +66,8 @@ services:
     ports:
       - 5341:5341
       - 8081:80
+    networks:
+      - onetheater-network
 
   onetheater.redis:
     image: redis:latest
@@ -53,3 +75,51 @@ services:
     restart: always
     ports:
       - 6379:6379
+    networks:
+      - onetheater-network
+
+  onetheater.keycloak.database:
+    image: postgres:16
+    container_name: OneTheater.Keycloak.Database
+    environment:
+      POSTGRES_DB: keycloak
+      POSTGRES_USER: keycloak
+      POSTGRES_PASSWORD: keycloak
+    volumes:
+      - ./.containers/keycloak-db:/var/lib/postgresql/data
+    ports:
+      - 5433:5432
+    networks:
+      - onetheater-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U keycloak"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  onetheater.keycloak:
+    image: quay.io/keycloak/keycloak:26.0.8
+    container_name: OneTheater.Keycloak
+    command:
+      - start-dev
+      - --import-realm
+    environment:
+      KEYCLOAK_ADMIN: admin
+      KEYCLOAK_ADMIN_PASSWORD: admin
+      KC_DB: postgres
+      KC_DB_URL_HOST: onetheater.keycloak.database
+      KC_DB_URL_DATABASE: keycloak
+      KC_DB_USERNAME: keycloak
+      KC_DB_PASSWORD: keycloak
+      KC_HOSTNAME_STRICT: false
+      KC_HOSTNAME_STRICT_HTTPS: false
+      KC_HTTP_ENABLED: true
+    ports:
+      - 8082:8080
+    volumes:
+      - ./.containers/keycloak/import:/opt/keycloak/data/import
+    networks:
+      - onetheater-network
+    depends_on:
+      onetheater.keycloak.database:
+        condition: service_healthy

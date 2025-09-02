@@ -1,4 +1,5 @@
 ﻿using OneTheater.Common.Domain.Abstractions;
+using OneTheater.Modules.Users.Domain.Users.Events;
 
 namespace OneTheater.Modules.Users.Domain.Users;
 
@@ -26,11 +27,22 @@ public sealed class User : Entity
 
         if (username == "admin")
         {
-
             return Result.Failure<User>(UserErrors.AdminUserName);
         }
 
-        user.Raise(new UserCreatedDomainEvent(user.Id));
+        ////user.Raise(new UserCreatedDomainEvent(
+        ////    user.Id,
+        ////    user.Username,
+        ////    user.FirstName,
+        ////    user.LastName,
+        ////    user.Email));
+
+        user.Raise(new KeycloakCreateUserDomainEvent(
+            user.Id,
+            user.Username,
+            user.FirstName,
+            user.LastName,
+            user.Email));
 
         return user;
     }
