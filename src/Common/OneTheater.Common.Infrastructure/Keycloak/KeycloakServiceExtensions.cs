@@ -27,7 +27,12 @@ public static class KeycloakServiceExtensions
             {
                 client.ClientId = keycloakAdminClientOptions.Resource;
                 client.ClientSecret = keycloakAdminClientOptions.Credentials.Secret;
-                client.TokenEndpoint = keycloakAdminClientOptions.KeycloakTokenEndpoint;
+                // Prefer internal URL for server-to-server auth if available, otherwise fall back to external
+                string? realm = configuration["KeycloakAdminAPI:realm"];
+                string? internalUrl = configuration["KeycloakAdminAPI:internal-auth-server-url"];
+                string? externalUrl = configuration["KeycloakAdminAPI:auth-server-url"];
+                string? baseUrl = string.IsNullOrWhiteSpace(internalUrl) ? externalUrl : internalUrl;
+                client.TokenEndpoint = $"{baseUrl!.TrimEnd('/')}/realms/{realm}/protocol/openid-connect/token";
             });
 
         services

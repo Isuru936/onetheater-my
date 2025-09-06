@@ -23,7 +23,7 @@ services:
         condition: service_started
 
   onetheater.database:
-    image: postgres:latest
+    image: postgres:16
     container_name: OneTheater.Database
     environment:
       POSTGRES_USER: postgres
@@ -32,7 +32,7 @@ services:
     volumes:
       - ./.containers/db:/var/lib/postgresql/data
     ports:
-      - 5432:5432
+      - 5434:5432
     networks:
       - onetheater-network
     healthcheck:
@@ -51,7 +51,7 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - ./.containers/pgadmin:/var/lib/pgadmin
+      - pgadmin_data:/var/lib/pgadmin
     networks:
       - onetheater-network
     depends_on:
@@ -123,3 +123,18 @@ services:
     depends_on:
       onetheater.keycloak.database:
         condition: service_healthy
+
+  onetheater.rabbitmq:
+    image: rabbitmq:3.13-management
+    container_name: OneTheater.RabbitMQ
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    ports:
+      - "5672:5672"     # AMQP
+      - "15672:15672"   # Management UI
+    networks:
+      - onetheater-network
+
+volumes:
+  pgadmin_data:

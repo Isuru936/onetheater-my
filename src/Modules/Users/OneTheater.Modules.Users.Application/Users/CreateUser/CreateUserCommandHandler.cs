@@ -22,14 +22,6 @@ internal sealed class CreateUserCommandHandler(
 
         await unitOfWork.SaveChangesAsync(cancellationToken);
 
-        // Future Reference - DB Duplication
-        ////await customersApi.PostAsync(new CustomerCreateRequest()
-        ////{
-        ////    Email = request.Email,
-        ////    FirstName = request.FirstName,
-        ////    LastName = request.LastName
-        ////}, cancellationToken);
-
         return result.Value.Id;
     }
 }

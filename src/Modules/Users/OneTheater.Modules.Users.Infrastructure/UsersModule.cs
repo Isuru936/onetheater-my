@@ -9,9 +9,13 @@ using OneTheater.Common.Presentation.Endpoints;
 using OneTheater.Modules.Users.Application.Abstractions.Data;
 using OneTheater.Modules.Users.Domain.Users;
 using OneTheater.Modules.Users.Infrastructure.Database;
+using MassTransit;
+using OneTheater.Modules.Users.Presentation.Consumers;
 using OneTheater.Modules.Users.Infrastructure.Outbox;
 using OneTheater.Modules.Users.Infrastructure.Users;
 using OneTheater.Modules.Users.Infrastructure.UserTypes;
+using OneTheater.Modules.Users.Infrastructure.Contacts;
+using OneTheater.Modules.Users.Domain.Contacts;
 
 namespace OneTheater.Modules.Users.Infrastructure;
 public static class UsersModule
@@ -26,6 +30,11 @@ public static class UsersModule
         services.AddInfrastructure(configuration);
 
         return services;
+    }
+
+    public static void ConfigureConsumers(IRegistrationConfigurator registrationConfigurator)
+    {
+        registrationConfigurator.AddConsumer<GetUserContactDetailsConsumer>();
     }
 
     private static void AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
@@ -46,6 +55,7 @@ public static class UsersModule
 
         services.AddScoped<IUserRepository, UserRepository>();
         services.AddScoped<IUserTypeRepository, UserTypeRepository>();
+        services.AddScoped<IContactInfoRepository, ContactInfoRepository>();
 
         services.Configure<OutboxOptions>(configuration.GetSection("Users:Outbox"));
         services.ConfigureOptions<ConfigureProcessOutboxJob>();

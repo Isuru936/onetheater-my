@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using OneTheater.Common.Application.EventBus;
-using OneTheater.Common.Domain.Abstractions;
+﻿using OneTheater.Common.Domain.Abstractions;
 
 namespace OneTheater.Modules.Users.Domain.Users.Events;
 public sealed class KeycloakCreateUserDomainEvent : DomainEvent

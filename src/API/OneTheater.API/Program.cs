@@ -34,7 +34,7 @@ string redisConnectionString = builder.Configuration.GetConnectionString("Cache"
 
 builder.Services.AddInfrastructure(
     builder.Configuration,
-    [ShowsModule.ConfigureConsumers], // add this if you have a consumer
+    [ShowsModule.ConfigureConsumers, UsersModule.ConfigureConsumers], // register module consumers
     databaseConnectionString,
     redisConnectionString);
 

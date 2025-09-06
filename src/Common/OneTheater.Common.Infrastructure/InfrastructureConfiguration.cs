@@ -22,7 +22,7 @@ public static class InfrastructureConfiguration
 {
     public static IServiceCollection AddInfrastructure(
         this IServiceCollection services,
-        IConfiguration configure,
+        IConfiguration configuration,
         Action<IRegistrationConfigurator>[] moduleConfigureConsumers,
         string databaseConnectionString,
         string redisConnectionString)
@@ -61,17 +61,26 @@ public static class InfrastructureConfiguration
 
         services.TryAddSingleton<IEventBus, EventBus.EventBus>();
 
-        services.AddKeycloakService(configure);
+        services.AddKeycloakService(configuration);
 
-        services.AddMassTransit(configure =>
+        services.AddMassTransit(registration =>
         {
             foreach (Action<IRegistrationConfigurator> configureConsumer in moduleConfigureConsumers)
             {
-                configureConsumer(configure);
+                configureConsumer(registration);
             }
 
-            configure.UsingInMemory((context, cfg) =>
+            registration.UsingRabbitMq((context, cfg) =>
             {
+                string host = configuration["MessageBroker:Host"] ?? "rabbitmq://onetheater.rabbitmq";
+                string username = configuration["MessageBroker:Username"] ?? "guest";
+                string password = configuration["MessageBroker:Password"] ?? "guest";
+
+                cfg.Host(new Uri(host), h =>
+                {
+                    h.Username(username);
+                    h.Password(password);
+                });
                 cfg.ConfigureEndpoints(context);
             });
         });
