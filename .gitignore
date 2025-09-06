@@ -5,8 +5,6 @@
 *.dll.config
 *.exe.config
 
-.containers
-
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
